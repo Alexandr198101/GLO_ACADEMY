@@ -24,24 +24,26 @@ let allServicePrices;
 let fullPrice;
 let servicePercentPrice;
 
-let getAllServicePrices = function () {
+const getAllServicePrices = function () {
   return servicePrice1 + servicePrice2;
 };
-let getFullPrice = function () {
+const getFullPrice = function () {
   return screenPrice + allServicePrices;
 };
-let getTitle = function () {
-  return title.trim()[0].toUpperCase() + title.trim().toLocaleLowerCase();
+const getTitle = function () {
+  return (
+    title.trim()[0].toUpperCase() + title.trim().substr(1).toLocaleLowerCase()
+  );
 };
-let getServicePercentPrices = function () {
-  fullPrice - (fullPrice * rollback) / 100;
+const getServicePercentPrices = function () {
+  return fullPrice - (fullPrice * rollback) / 100;
 };
 
-let showTypeOf = function (variable) {
+const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
 };
 
-let getRollBackMassage = function () {
+const getRollBackMassage = function () {
   if (fullPrice >= 30000) {
     return 'Даем скидку в 10%';
   } else if (fullPrice >= 15000 && fullPrice < 30000) {
@@ -53,10 +55,10 @@ let getRollBackMassage = function () {
   }
 };
 
-allServicePrices = getAllServicePrices;
-fullPrice = getFullPrice;
-title = getTitle;
-servicePercentPrice = getServicePercentPrices;
+allServicePrices = getAllServicePrices();
+fullPrice = getFullPrice();
+title = getTitle();
+servicePercentPrice = getServicePercentPrices();
 
 showTypeOf(title);
 showTypeOf(screenPrice);
